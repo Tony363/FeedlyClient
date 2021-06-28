@@ -1,0 +1,12 @@
+import requests,time
+
+if __name__ == '__main__':
+    t_end = time.time() + 60 * 15
+    while time.time() < t_end:
+        try:
+            r = requests.get('http://127.0.0.1:8000/')
+            time.sleep(5)
+            print(r.content)
+        except KeyboardInterrupt as ki:
+            print(ki.message)
+    
