@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<opml version="1.0">
+    <head>
+        <title>Tony subscriptions in feedly Cloud</title>
+    </head>
+    <body>
+        <outline text="fintech" title="fintech">
+            <outline type="rss" text="Finance – Fortune" title="Finance – Fortune" xmlUrl="http://fortune.com/finance/feed/" htmlUrl="https://fortune.com"/>
+            <outline type="rss" text="The Economist: Finance &amp; economics" title="The Economist: Finance &amp; economics" xmlUrl="http://www.economist.com/feeds/print-sections/79/finance-and-economics.xml" htmlUrl="https://www.economist.com"/>
+            <outline type="rss" text="Forbes - Investing" title="Forbes - Investing" xmlUrl="http://www.forbes.com/investing/feed" htmlUrl="https://www.forbes.com/investing/"/>
+            <outline type="rss" text="Best posts on r/dataisbeautiful" title="Best posts on r/dataisbeautiful" xmlUrl="https://api.reddit.com/subreddit/dataisbeautiful;best" htmlUrl="https://www.reddit.com/r/dataisbeautiful/best"/>
+            <outline type="rss" text="MarketWatch.com - Financial Services Industry News" title="MarketWatch.com - Financial Services Industry News" xmlUrl="http://feeds.marketwatch.com/marketwatch/financial" htmlUrl="http://www.marketwatch.com/search?mode=Industry&amp;rpp=15&amp;modeparam=Financial+Services&amp;siteid=rss"/>
+            <outline type="rss" text="Banking Exchange News Feed - Banking Exchange - Banking Exchange" title="Banking Exchange News Feed - Banking Exchange - Banking Exchange" xmlUrl="http://www.bankingexchange.com/index.php/news-feed?format=feed" htmlUrl="https://www.bankingexchange.com"/>
+            <outline type="rss" text="Financial Times - Private equity " title="Financial Times - Private equity " xmlUrl="http://www.ft.com/rss/indepth/investmentbanking/privateequity" htmlUrl="https://www.ft.com/stream/ab70c42c-4d60-4851-89bb-16e2daeddfc1"/>
+            <outline type="rss" text="Calculated Risk" title="Calculated Risk" xmlUrl="http://www.calculatedriskblog.com/feeds/posts/default" htmlUrl="http://www.calculatedriskblog.com/"/>
+            <outline type="rss" text="Finextra Research" title="Finextra Research" xmlUrl="http://www.finextra.com/rss/headlines.asp" htmlUrl="https://www.finextra.com/"/>
+        </outline>
+    </body>
+</opml>
