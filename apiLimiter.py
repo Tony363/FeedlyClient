@@ -7,14 +7,12 @@ from fastapi_limiter.depends import RateLimiter
 
 app = FastAPI()
 
-
 @app.on_event("startup")
 async def startup():
-    redis = await aioredis.create_redis_pool("redis://localhost")
-    FastAPILimiter.init(redis)
+    redis = await aioredis.create_redis_pool("redis://127.0.0.1:6379")
+    await FastAPILimiter.init(redis)
 
-
-@app.get("/", dependencies=[Depends(RateLimiter(times=2, seconds=5))])
+@app.get("/", dependencies=[Depends(RateLimiter(times=10, seconds=60))])
 async def index():
     return {"msg": "Hello World"}
 

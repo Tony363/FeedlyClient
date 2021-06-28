@@ -1,8 +1,6 @@
 import pandas as pd
 import opml as ol
 import listparser as lp
-import json
-from dict2xml import dict2xml
 from dicttoxml import dicttoxml
 from xml.dom.minidom import parseString
 
@@ -67,6 +65,6 @@ if __name__ == '__main__':
         )
     dom = to_xml(df)
     print(dom.toprettyxml())
-    # df.to_csv("feedlyRSS.csv")
+    df.to_csv("feedlyRSS.csv")
     pass
     
