@@ -16,26 +16,10 @@ def OPML():
         print(outline[0].text)
     print()
 
-def Lparser(rssfile='./feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-28.opml'):
-    d = lp.parse(rssfile)
-    print(d)
-    d_methods = [method_name for method_name in dir(d)
-                 if callable(getattr(d, method_name))]
-    print(d_methods,'\n')
-    feeds = d.feeds
-    dic = {feed:[feeds[0][feed]] for feed in feeds[0]}
-    keys = dic.keys()
-    for line in range(1,len(d.feeds)):
-        """
-        print(d.feeds[line])
-        print(feeds[line].title)
-        print(feeds[line].categories)
-        print(feeds[line].url)
-        print(feeds[line].tags)
-        """
-        for key in keys:
-            dic[key].append(feeds[line][key])
-    return dic
+def unwrap(lst):
+    if isinstance(lst,list):
+        lst = unwrap(lst[0])
+    return lst
 
 def mergeDict(dic1,dic2):
     keys = dic1.keys()
@@ -46,15 +30,27 @@ def mergeDict(dic1,dic2):
             dic1[key] += val
     return dic1
 
-def RSSmultiple(*args,source='url'):
+def Lparser(rssfile='./feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-28.opml'):
+    d = lp.parse(rssfile)
+    d_methods = [method_name for method_name in dir(d)
+                 if callable(getattr(d, method_name))]
+    print(d_methods,'\n')
+    feeds = d.feeds
+    keys = feeds[0].keys()
+    dic = {}
+    for line in range(len(feeds)):
+        for key in keys:
+            if isinstance(feeds[line][key],list):
+                feeds[line][key] = unwrap(feeds[line][key]) 
+        dic[f"RssFeed {line}"] = feeds[line]        
+    return dic
+
+def RSSmultiple(*args):
     fdic = {}
     for file in args:
-        dic = Lparser(file)
-        fdic = mergeDict(fdic, dic)
-    df = pd.DataFrame(fdic)
-    df.sort_values(by=source,inplace=True)
-    df.set_index(source,inplace=True)
-    return df,fdic
+        dic = Lparser("./In/"+file)
+        fdic = {**fdic,**dic}
+    return fdic
 
 def to_xml(dic):
     xml = dicttoxml(dic,attr_type=False,item_func=lambda x:x)
@@ -64,18 +60,23 @@ def to_xml(dic):
     xmlfile.close()
     return parseString(xml)
 
+def to_csv(dic,source='categories'):
+    df = pd.DataFrame(dic).transpose()
+    df.sort_values(by=source,inplace=True)
+    df.to_csv("Out/FeedlyRSS.csv")
+    return df
 
 if __name__ == '__main__':
     print(pd.__version__)
-    # print(*os.listdir('./In'))
-    # df,fdic = RSSmultiple(os.listdir('./In'))
-    df,fdic = RSSmultiple(
-        './In/feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-28.opml',
-        './In/feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-29.opml',
-        './In/feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-29(1).opml'
-        )
+    print(*os.listdir('./In'))
+    fdic = RSSmultiple(*os.listdir('./In'))
+    # fdic = RSSmultiple(
+    #     './In/feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-28.opml',
+    #     './In/feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-29.opml',
+    #     './In/feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-29(1).opml'
+    #     )
     dom = to_xml(fdic)
+    df = to_csv(fdic)
     print(dom.toprettyxml())
-    df.to_csv("./Out/feedlyRSS.csv")
-    
+
     

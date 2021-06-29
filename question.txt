@@ -1,0 +1,5 @@
+Q1- 給定幾個 feedly rss 匯出檔，寫個整合程式（把相同的 rss source 合併），並整合這些匯出檔 xml（也可套用到其他類似資料，例如 gmail filter 匯出檔)
+
+Q2- api rate limit，做一個簡單的 hello world api，但需要限制這個 api 被呼叫的次數一分鐘十次（這可以延伸成 第一次呼叫後一分鐘內十次 ）
+
+Q3- chrome 歷史記錄匯出，然後計算哪些網域被看最多次
