@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import opml as ol
 import listparser as lp
@@ -17,6 +18,7 @@ def OPML():
 
 def Lparser(rssfile='./feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-28.opml'):
     d = lp.parse(rssfile)
+    print(d)
     d_methods = [method_name for method_name in dir(d)
                  if callable(getattr(d, method_name))]
     print(d_methods,'\n')
@@ -57,7 +59,7 @@ def RSSmultiple(*args,source='url'):
 def to_xml(dic):
     xml = dicttoxml(dic,attr_type=False,item_func=lambda x:x)
     xml_decode = xml.decode()
-    xmlfile = open("FeedlyRSS.xml","w")
+    xmlfile = open("./Out/FeedlyRSS.xml","w")
     xmlfile.write(xml_decode)
     xmlfile.close()
     return parseString(xml)
@@ -65,13 +67,15 @@ def to_xml(dic):
 
 if __name__ == '__main__':
     print(pd.__version__)
+    # print(*os.listdir('./In'))
+    # df,fdic = RSSmultiple(os.listdir('./In'))
     df,fdic = RSSmultiple(
-        './feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-28.opml',
-        './feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-29.opml',
-        './feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-29(1).opml'
+        './In/feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-28.opml',
+        './In/feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-29.opml',
+        './In/feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-29(1).opml'
         )
     dom = to_xml(fdic)
     print(dom.toprettyxml())
-    df.to_csv("feedlyRSS.csv")
+    df.to_csv("./Out/feedlyRSS.csv")
     
     
