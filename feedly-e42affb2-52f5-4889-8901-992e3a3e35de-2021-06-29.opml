@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<opml version="1.0">
+    <head>
+        <title>Tony subscriptions in feedly Cloud</title>
+    </head>
+    <body>
+        <outline text="fintech" title="fintech">
+            <outline type="rss" text="Finance – Fortune" title="Finance – Fortune" xmlUrl="http://fortune.com/finance/feed/" htmlUrl="https://fortune.com"/>
+            <outline type="rss" text="The Economist: Finance &amp; economics" title="The Economist: Finance &amp; economics" xmlUrl="http://www.economist.com/feeds/print-sections/79/finance-and-economics.xml" htmlUrl="https://www.economist.com"/>
+            <outline type="rss" text="Forbes - Investing" title="Forbes - Investing" xmlUrl="http://www.forbes.com/investing/feed" htmlUrl="https://www.forbes.com/investing/"/>
+            <outline type="rss" text="Best posts on r/dataisbeautiful" title="Best posts on r/dataisbeautiful" xmlUrl="https://api.reddit.com/subreddit/dataisbeautiful;best" htmlUrl="https://www.reddit.com/r/dataisbeautiful/best"/>
+            <outline type="rss" text="MarketWatch.com - Financial Services Industry News" title="MarketWatch.com - Financial Services Industry News" xmlUrl="http://feeds.marketwatch.com/marketwatch/financial" htmlUrl="http://www.marketwatch.com/search?mode=Industry&amp;rpp=15&amp;modeparam=Financial+Services&amp;siteid=rss"/>
+            <outline type="rss" text="Banking Exchange News Feed - Banking Exchange - Banking Exchange" title="Banking Exchange News Feed - Banking Exchange - Banking Exchange" xmlUrl="http://www.bankingexchange.com/index.php/news-feed?format=feed" htmlUrl="https://www.bankingexchange.com"/>
+            <outline type="rss" text="Financial Times - Private equity " title="Financial Times - Private equity " xmlUrl="http://www.ft.com/rss/indepth/investmentbanking/privateequity" htmlUrl="https://www.ft.com/stream/ab70c42c-4d60-4851-89bb-16e2daeddfc1"/>
+            <outline type="rss" text="Calculated Risk" title="Calculated Risk" xmlUrl="http://www.calculatedriskblog.com/feeds/posts/default" htmlUrl="http://www.calculatedriskblog.com/"/>
+            <outline type="rss" text="Finextra Research" title="Finextra Research" xmlUrl="http://www.finextra.com/rss/headlines.asp" htmlUrl="https://www.finextra.com/"/>
+        </outline>
+        <outline text="DataScience" title="DataScience">
+            <outline type="rss" text="data from the trenches" title="data from the trenches" xmlUrl="https://medium.com/feed/data-from-the-trenches" htmlUrl="https://medium.com/data-from-the-trenches?source=rss----853867ec3a23---4"/>
+            <outline type="rss" text="KDnuggets" title="KDnuggets" xmlUrl="http://feeds.feedburner.com/kdnuggets-data-mining-analytics" htmlUrl="https://www.kdnuggets.com"/>
+            <outline type="rss" text="Data Science in The Airbnb Tech Blog on Medium" title="Data Science in The Airbnb Tech Blog on Medium" xmlUrl="https://medium.com/feed/airbnb-engineering/tagged/data-science" htmlUrl="https://medium.com/airbnb-engineering/tagged/data-science?source=rss----53c7c27702d5--data_science"/>
+            <outline type="rss" text="Data Science Blog by Domino" title="Data Science Blog by Domino" xmlUrl="http://blog.dominodatalab.com/rss/" htmlUrl="https://blog.dominodatalab.com"/>
+            <outline type="rss" text="Machine Learning Mastery" title="Machine Learning Mastery" xmlUrl="http://feeds.feedburner.com/MachineLearningMastery" htmlUrl="https://machinelearningmastery.com"/>
+            <outline type="rss" text="Center for Open Source Data and AI Technologies" title="Center for Open Source Data and AI Technologies" xmlUrl="https://medium.com/feed/ibm-watson-data-lab" htmlUrl="https://medium.com/codait?source=rss----b4b20e81e90f---4"/>
+            <outline type="rss" text="Analytics Vidhya " title="Analytics Vidhya " xmlUrl="http://feeds.feedburner.com/AnalyticsVidhya" htmlUrl="https://www.analyticsvidhya.com"/>
+            <outline type="rss" text="Featured Blog Posts - Data Science Central" title="Featured Blog Posts - Data Science Central" xmlUrl="http://www.datasciencecentral.com/profiles/blog/feed?promoted=1&amp;xn_auth=no"/>
+            <outline type="rss" text="Data Science in Myntra Engineering on Medium" title="Data Science in Myntra Engineering on Medium" xmlUrl="https://medium.com/feed/myntra-engineering/tagged/data-science" htmlUrl="https://medium.com/myntra-engineering/tagged/data-science?source=rss----7484818e9f88--data_science"/>
+            <outline type="rss" text="Blog – Dataquest" title="Blog – Dataquest" xmlUrl="https://www.dataquest.io/blog/atom.xml" htmlUrl="https://www.dataquest.io"/>
+            <outline type="rss" text="Data Science | Udacity" title="Data Science | Udacity" xmlUrl="http://blog.udacity.com/category/data-science/feed" htmlUrl="https://www.udacity.com/blog"/>
+            <outline type="rss" text="Data Science Greedy" title="Data Science Greedy" xmlUrl="http://prdeepakbabu.wordpress.com/feed/" htmlUrl="https://prdeepakbabu.wordpress.com"/>
+            <outline type="rss" text="Ryan Swanstrom" title="Ryan Swanstrom" xmlUrl="http://datascience101.wordpress.com/feed/" htmlUrl="https://ryanswanstrom.com"/>
+            <outline type="rss" text="PyTorch" title="PyTorch" xmlUrl="https://medium.com/feed/pytorch" htmlUrl="https://medium.com/pytorch?source=rss----512b8efdf2e7---4"/>
+            <outline type="rss" text="Stories by ODSC - Open Data Science on Medium" title="Stories by ODSC - Open Data Science on Medium" xmlUrl="https://medium.com/feed/@ODSC" htmlUrl="https://medium.com/@ODSC?source=rss-2b9d62538208------2"/>
+            <outline type="rss" text="ParallelDots" title="ParallelDots" xmlUrl="http://blog.paralleldots.com/feed/" htmlUrl="https://blog.paralleldots.com"/>
+            <outline type="rss" text="Data science feed" title="Data science feed" xmlUrl="http://rushter.com/dsreader/feed/" htmlUrl="https://rushter.com/dsreader/"/>
+            <outline type="rss" text="Apache MXNet" title="Apache MXNet" xmlUrl="https://medium.com/feed/apache-mxnet" htmlUrl="https://medium.com/apache-mxnet?source=rss----d1802b798def---4"/>
+            <outline type="rss" text="Data Science Central" title="Data Science Central" xmlUrl="http://www.datasciencecentral.com/profiles/blog/feed?xn_auth=no" htmlUrl="https://www.datasciencecentral.com/"/>
+            <outline type="rss" text="AnalytiXon" title="AnalytiXon" xmlUrl="http://advanceddataanalytics.net/feed/" htmlUrl="https://analytixon.com"/>
+            <outline type="rss" text="Data Science Journal Latest Articles" title="Data Science Journal Latest Articles" xmlUrl="http://datascience.codata.org/gateway/plugin/WebFeedGatewayPlugin/rss2/" htmlUrl="https://datascience.codata.org/articles/"/>
+            <outline type="rss" text="Data Science articles" title="Data Science articles" xmlUrl="https://community.alteryx.com/pvsmt99345/rss/board?board.id=Data-Science-Blog" htmlUrl="https://community.alteryx.com/t5/Data-Science/bg-p/Data-Science-Blog"/>
+            <outline type="rss" text="RAPIDS AI" title="RAPIDS AI" xmlUrl="https://medium.com/feed/rapids-ai" htmlUrl="https://medium.com/rapids-ai?source=rss----2d7ba3077a44---4"/>
+            <outline type="rss" text="Data Science" title="Data Science" xmlUrl="http://www.reddit.com/r/datascience/.rss" htmlUrl="https://www.reddit.com/r/datascience/"/>
+            <outline type="rss" text="Starbridge Partners" title="Starbridge Partners" xmlUrl="http://datasciencereport.com/feed/" htmlUrl="http://starbridgepartners.com"/>
+            <outline type="rss" text="Reinforcement Learning" title="Reinforcement Learning" xmlUrl="https://www.reddit.com/r/reinforcementlearning/.rss" htmlUrl="https://www.reddit.com/r/reinforcementlearning/"/>
+            <outline type="rss" text="Data Science on Medium" title="Data Science on Medium" xmlUrl="https://medium.com/feed/tag/data-science" htmlUrl="https://medium.com/tag/data-science/latest?source=rss------data_science-5"/>
+            <outline type="rss" text="DataTau" title="DataTau" xmlUrl="http://www.datatau.com/rss" htmlUrl="http://www.datatau.com/"/>
+        </outline>
+    </body>
+</opml>
