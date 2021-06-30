@@ -16,6 +16,7 @@ def OPML():
         print(outline[0].text)
     print()
 
+
 def unwrap(lst):
     if isinstance(lst,list):
         lst = unwrap(lst[0])
