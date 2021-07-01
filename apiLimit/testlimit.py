@@ -1,6 +1,6 @@
 import requests,time
 
-if __name__ == '__main__':
+def main():
     t_end = time.time() + 60 * 15
     while time.time() < t_end:
         try:
@@ -9,4 +9,7 @@ if __name__ == '__main__':
             print(r.content)
         except KeyboardInterrupt as ki:
             print(ki.message)
+
+if __name__ == '__main__':
+    main()
     

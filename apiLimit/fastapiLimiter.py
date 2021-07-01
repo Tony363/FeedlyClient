@@ -4,12 +4,14 @@ from fastapi_limiter import FastAPILimiter
 from fastapi_limiter.depends import RateLimiter
 from fastapi_utils.tasks import repeat_every
 
-
 class Cache:
-    def __init__(self):
-        """self.s_time = time.time()"""
+    def __init__(self,rate=10,update=60):
+        self.s_time = time.time()
         self.token = 0
-
+        self.rate = rate
+        self.update = update
+        self.bucket = []
+        
     def checkToken(self):
         """
         # for handled by request
@@ -17,24 +19,35 @@ class Cache:
             self.s_time = time.time()
             self.token = 0
         """
-        if self.token < 10:
+        if self.token < self.rate:
             self.token += 1
             return {'msg':'hello world'} 
-        return {'msg':'too many requests received'}
+        return {'msg':'too many requests received'}       
 
 logger = logging.getLogger(__name__)
 app = FastAPI()
 cache = Cache()
 
+@app.get("/")
+async def index():
+    global cache
+    print("CACHE INFO: ",len(cache.bucket))
+    if len(cache.bucket) < cache.rate:
+        cache.bucket.append("hello world")
+    if time.time() - cache.s_time >= cache.rate:
+        cache.s_time = time.time()
+        return {'msg':cache.bucket.pop(0)}
+    return {'msg':'too many requests received'}
+
 @app.on_event("startup")
-@repeat_every(seconds=60,logger=logger,wait_first=True)
+@repeat_every(seconds=cache.update,logger=logger,wait_first=True)
 def resetToken():
     global cache
     cache.token = 0
 
-@app.get("/")
-async def index():
-    return cache.checkToken()
+# @app.get("/")
+# async def index():
+#     return cache.checkToken()
 
 # @app.on_event("startup")
 # async def startup():
@@ -48,8 +61,8 @@ async def index():
     
 if __name__ == "__main__":
     """
-    learn leaking bucket algorithm
-    so far using token bucket algorithm 
+    leaking bucket algorithm - standart rate response
+    token bucket algorithm - with burst
     """
-    uvicorn.run("apiLimiter:app", debug=True, reload=True)
+    uvicorn.run("fastapiLimiter:app", debug=True, reload=True)
     
