@@ -5,9 +5,10 @@ from fastapi_limiter.depends import RateLimiter
 from fastapi_utils.tasks import repeat_every
 
 class Cache:
-    def __init__(self,rate=10,update=60):
+    def __init__(self, limit=10,update=60,rate=6):
         self.s_time = time.time()
         self.token = 0
+        self.limit = limit
         self.rate = rate
         self.update = update
         self.bucket = []
@@ -19,7 +20,7 @@ class Cache:
             self.s_time = time.time()
             self.token = 0
         """
-        if self.token < self.rate:
+        if self.token < self.limit:
             self.token += 1
             return {'msg':'hello world'} 
         return {'msg':'too many requests received'}       
@@ -32,7 +33,7 @@ cache = Cache()
 async def index():
     global cache
     print("CACHE INFO: ",len(cache.bucket))
-    if len(cache.bucket) < cache.rate:
+    if len(cache.bucket) < cache.limit:
         cache.bucket.append("hello world")
     if time.time() - cache.s_time >= cache.rate:
         cache.s_time = time.time()
@@ -44,6 +45,7 @@ async def index():
 def resetToken():
     global cache
     cache.token = 0
+    cache.bucket.clear()
 
 # @app.get("/")
 # async def index():
