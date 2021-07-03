@@ -23,18 +23,33 @@ class Cache:
         if self.token < self.limit:
             self.token += 1
             return {'msg':'hello world'} 
-        return {'msg':'too many requests received'}       
+        return {'msg':'too many requests received'}   
 
+    def __str__(self):
+        return f"CACHE INFO: {len(self.bucket)}"    
+
+"""
+global variable objects
+"""
 logger = logging.getLogger(__name__)
-app = FastAPI()
+app = FastAPI(title="api rate limiter")
 cache = Cache()
+LOCAL_REDIS_USL = "redis://127.0.0.1:6379"
 
+"""
+Implementation of both token algorithm and leaky bucket.
+Object storage base and requests function based
+"""
 @app.get("/")
 async def index():
+    return cache.checkToken()
+
+@app.get("/{message}")
+async def index(message:str):
     global cache
-    print("CACHE INFO: ",len(cache.bucket))
+    print(cache)
     if len(cache.bucket) < cache.limit:
-        cache.bucket.append("hello world")
+        cache.bucket.append(message)
     if time.time() - cache.s_time >= cache.rate:
         cache.s_time = time.time()
         return {'msg':cache.bucket.pop(0)}
@@ -47,13 +62,13 @@ def resetToken():
     cache.token = 0
     cache.bucket.clear()
 
-# @app.get("/")
-# async def index():
-#     return cache.checkToken()
 
+"""
+Uses packaged aioredis integrated with FastAPILimiter
+"""
 # @app.on_event("startup")
 # async def startup():
-#     redis = await aioredis.create_redis_pool("redis://127.0.0.1:6379")
+#     redis = await aioredis.create_redis_pool(LOCAL_REDIS_URL)
 #     await FastAPILimiter.init(redis)
 
 # @app.get("/", dependencies=[Depends(RateLimiter(times=10, seconds=60))])
