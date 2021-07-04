@@ -1,11 +1,8 @@
-import aioredis,uvicorn,time,logging,os
+import aioredis,uvicorn,time,logging
 from fastapi import Depends, FastAPI
 from fastapi_limiter import FastAPILimiter
 from fastapi_limiter.depends import RateLimiter
 from fastapi_utils.tasks import repeat_every
-
-project_key = os.environ.get("deta_key")
-project_id= os.environ.get("deta_id")
 
 class Cache:
     def __init__(self, limit=10,update=60,rate=6):

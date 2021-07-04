@@ -1,12 +1,12 @@
-import requests,ast,json
+import requests,ast,json,os
 from client import FeedlyClient
 from pathlib import Path
 from feedly.api_client.session import FeedlySession
 
 FEEDLY_REDIRECT_URI = "http://fabreadly.com/auth_callback"
-FEEDLY_CLIENT_ID="e42affb2-52f5-4889-8901-992e3a3e35de"
+FEEDLY_CLIENT_ID = os.environ.get("feedly_ClientID")
 FEEDLY_CLIENT_SECRET="secret"
-FEEDLY_TOKEN = 'A9eehjuM3ZcADztI5JahBdjx0Pl8yZFO2lC1_-IwdC5im1U5j7n55ikt-BikLIRalu_KDrhdPjdA827XMlM5jEier6m0p98AgfPgepnm5sz9f7g0t_87ETZvZvoxGIJnWt2EXEpt4OBjdwsTli3bNszT0M1xiGZxKSDrVZ_iBxp69oQUaDqXmWqAGdQltVbUoFkPMQMc4Cx4BYkeWwO6huAc_o485Nu6LiuOwqZOzIPh18A:feedly'
+FEEDLY_TOKEN = os.environ.get("feedly_token")
 
 if __name__ == '__main__':
     # sess = FeedlySession(FEEDLY_TOKEN)

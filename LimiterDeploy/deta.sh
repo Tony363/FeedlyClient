@@ -1,0 +1,1 @@
+export PATH="/home/pysolver33/.deta/bin:$PATH"
