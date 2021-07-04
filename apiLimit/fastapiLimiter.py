@@ -37,7 +37,7 @@ global variable objects
 logger = logging.getLogger(__name__)
 app = FastAPI(title="api rate limiter")
 cache = Cache()
-LOCAL_REDIS_USL = "redis://127.0.0.1:6379"
+LOCAL_REDIS_URL = "redis://127.0.0.1:6379"
 
 """
 Implementation of both token algorithm and leaky bucket.
@@ -71,6 +71,7 @@ Uses packaged aioredis integrated with FastAPILimiter
 """
 # @app.on_event("startup")
 # async def startup():
+#     global LOCAL_REDIS_URL
 #     redis = await aioredis.create_redis_pool(LOCAL_REDIS_URL)
 #     await FastAPILimiter.init(redis)
 
