@@ -4,14 +4,19 @@ def main():
     t_end = time.time() + 60 * 15
     while time.time() < t_end:
         try:
-            # r = requests.get('http://127.0.0.1:8000/')
-            # r = requests.get('https://gm2mkz.deta.dev/hello_world') # leaky bucket,
-            # r = requests.get('https://gm2mkz.deta.dev/') # token algorithm
-            r = requests.get('https://zxkiws.deta.dev/')
+            # r = requests.get('http://127.0.0.1:8000/tokenAlgo')
+            # r = requests.get('http://127.0.0.1:8000/bucketAlgo/Hello_World')
+
+            # r = requests.get('https://u42jtn.deta.dev/tokenAlgo')
+            # r = requests.get('https://u42jtn.deta.dev/bucketAlgo/Hello_World')
+            r = requests.get('https://u42jtn.deta.dev/detabase/Hello_World')
+
+            #r = requests.get('http://127.0.0.1:8081/tokenAlgo')
+            # r = requests.get('http://127.0.0.1:8081/leakyBucket')
             time.sleep(1)
             print(r.content)
         except KeyboardInterrupt as ki:
-            print(ki.message)
+            exit(0)
 
 if __name__ == '__main__':
     main()
