@@ -34,47 +34,46 @@ global variable objects
 logger = logging.getLogger(__name__)
 app = FastAPI(title="api rate limiter")
 cache = Cache()
-LOCAL_REDIS_URL = "redis://127.0.0.1:6379"
+LOCAL_REDIS_USL = "redis://127.0.0.1:6379"
 
 """
 Implementation of both token algorithm and leaky bucket.
 Object storage base and requests function based
 """
-# @app.get("/")
-# async def index():
-#     return cache.checkToken()
+@app.get("/")
+async def index():
+    return cache.checkToken()
 
-# @app.get("/{message}")
-# async def index(message:str):
-#     global cache
-#     print(cache)
-#     if len(cache.bucket) < cache.limit:
-#         cache.bucket.append(message)
-#     if time.time() - cache.s_time >= cache.rate:
-#         cache.s_time = time.time()
-#         return {'msg':cache.bucket.pop(0)}
-#     return {'msg':'too many requests received'}
+@app.get("/{message}")
+async def index(message:str):
+    global cache
+    print(cache)
+    if len(cache.bucket) < cache.limit:
+        cache.bucket.append(message)
+    if time.time() - cache.s_time >= cache.rate:
+        cache.s_time = time.time()
+        return {'msg':cache.bucket.pop(0)}
+    return {'msg':'too many requests received'}
 
-# @app.on_event("startup")
-# @repeat_every(seconds=cache.update,logger=logger,wait_first=True)
-# def resetToken():
-#     global cache
-#     cache.token = 0
-#     cache.bucket.clear()
+@app.on_event("startup")
+@repeat_every(seconds=cache.update,logger=logger,wait_first=True)
+def resetToken():
+    global cache
+    cache.token = 0
+    cache.bucket.clear()
 
 
 """
 Uses packaged aioredis integrated with FastAPILimiter
 """
-@app.on_event("startup")
-async def startup():
-    global LOCAL_REDIS_URL
-    redis = await aioredis.create_redis_pool(LOCAL_REDIS_URL)
-    await FastAPILimiter.init(redis)
+# @app.on_event("startup")
+# async def startup():
+#     redis = await aioredis.create_redis_pool(LOCAL_REDIS_URL)
+#     await FastAPILimiter.init(redis)
 
-@app.get("/", dependencies=[Depends(RateLimiter(times=10, seconds=60))])
-async def index():
-    return {"msg": "Hello World"}
+# @app.get("/", dependencies=[Depends(RateLimiter(times=10, seconds=60))])
+# async def index():
+#     return {"msg": "Hello World"}
     
     
 if __name__ == "__main__":
