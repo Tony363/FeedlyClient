@@ -47,8 +47,9 @@ using detabases
 async def index(message:str):
     global cache
     if int(cache.db.get(str(cache.token))['key']) < cache.limit:
-        cache.token += 1
-        cache.db.put({'message':'Hello world','key':str(cache.token)})
+        print("working")
+    #     cache.token += 1
+    #     cache.db.put({'message':'Hello world','key':str(cache.token)})
     if time.time() - cache.s_time >= cache.rate:
         cache.s_time = time.time()
         return {'msg':cache.db.get(str(cache.token))['message']}
