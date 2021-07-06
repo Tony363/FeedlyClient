@@ -4,6 +4,7 @@ import opml as ol
 import listparser as lp
 from dicttoxml import dicttoxml
 from xml.dom.minidom import parseString
+from xml.etree import ElementTree
 
 def OPML():
     outline = ol.parse(
@@ -67,6 +68,17 @@ def to_csv(dic,source='categories'):
     df.to_csv("Out/FeedlyRSS.csv")
     return df
 
+
+def extract_rss_urls_from_opml(filename):
+    urls = []
+    with open(filename, 'rt') as f:
+        tree = ElementTree.parse(f)
+    for node in tree.findall('.//outline'):
+        url = node.attrib.get('xmlUrl')
+        if url:
+            urls.append(url)
+    return urls
+
 if __name__ == '__main__':
     print(pd.__version__)
     print(*os.listdir('./In'))
@@ -79,5 +91,7 @@ if __name__ == '__main__':
     dom = to_xml(fdic)
     df = to_csv(fdic)
     print(dom.toprettyxml())
+    urls = extract_rss_urls_from_opml('./In/feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-28.opml')
+    print(urls)
 
     
