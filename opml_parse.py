@@ -88,10 +88,11 @@ if __name__ == '__main__':
     #     './In/feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-29.opml',
     #     './In/feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-29(1).opml'
     #     )
+    # testing
     dom = to_xml(fdic)
     df = to_csv(fdic)
-    print(dom.toprettyxml())
+    # print(dom.toprettyxml())
     urls = extract_rss_urls_from_opml('./In/feedly-e42affb2-52f5-4889-8901-992e3a3e35de-2021-06-28.opml')
-    print(urls)
+    # print(urls)
 
     
