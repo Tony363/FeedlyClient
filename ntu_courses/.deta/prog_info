@@ -1,0 +1,1 @@
+{"id":"e64317af-51d0-4c60-a088-35012d205573","space":6996,"runtime":"python3.7","name":"ntu_courses","path":"u1bj9c","project":"c0v7erzu","account":"144798365827","region":"ap-southeast-1","deps":["aioredis","uvicorn","fastapi_utils","fastapi","fastapi_limiter","lxml"],"envs":null,"public":true,"log_level":"debug","cron":""}

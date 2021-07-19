@@ -1,0 +1,6 @@
+aioredis
+uvicorn
+fastapi_utils
+fastapi
+fastapi_limiter
+lxml
